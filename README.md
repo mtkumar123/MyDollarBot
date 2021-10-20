@@ -76,3 +76,4 @@ The below instructions can be followed in order to set-up this bot at your end i
 <p>Description: 'An easy to use Telegram Bot to track everyday expenses'</p>
 <p>Authors:'Dev, Prakruthi, Radhika, Rohan, Sunidhi'</p>
 <p>--------------------------------------------------------------------------------------------------</p>
+
