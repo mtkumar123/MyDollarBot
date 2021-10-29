@@ -12,7 +12,7 @@ class BaseCase(unittest.TestCase):
         """
         Creates a new user
         """
-        # os.chdir("test")
+        os.chdir("test")
         print(os.getcwd())
         self.user = User("1")
         self.expected_list = self.create_transaction()
