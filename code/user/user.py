@@ -33,7 +33,7 @@ class User:
         :type: string
         :return: None
         """
-        data_dir = "../data"
+        data_dir = "../../data"
         with open("{}/{}.pickle".format(data_dir, userid), "wb") as f:
             pickle.dump(self, f)
 
