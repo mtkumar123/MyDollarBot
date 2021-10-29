@@ -21,9 +21,9 @@ class BaseCase(unittest.TestCase):
         """
         Removes the user pickle
         """
-        os.chdir("..")
-        if os.path.exists("../data/1.pickle"):
-            os.remove("../data/1.pickle")
+        # os.chdir("..")
+        if os.path.exists("test/data/1.pickle"):
+            os.remove("test/data/1.pickle")
 
     def create_transaction(self):
         """
