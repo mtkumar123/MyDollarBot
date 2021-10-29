@@ -36,7 +36,7 @@ class User:
         """
         data_dir = "data"
         abspath = "{0}/{1}.pickle".format(data_dir, userid)
-        with open(abspath, "wb") as f:
+        with open(abspath, "wb+") as f:
             pickle.dump(self, f)
 
     def validate_entered_amount(self, amount_entered):
