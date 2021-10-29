@@ -1,7 +1,6 @@
 import unittest
 
-import code
-from code.code import add_user_record
+from code.bot import add_user_record, user_list
 
 
 def validate_user_list(users) -> str:
@@ -13,25 +12,25 @@ def validate_user_list(users) -> str:
     :rtype: bool
     """
     # assert exact number of users
-    if len(code.code.user_list) != len(users):
+    if len(user_list) != len(users):
         return f'Length does not match. ' \
                f'Expected {len(users)} users' \
-               f'Found {len(code.code.user_list)}'
+               f'Found {len(user_list)}'
 
     for user in users:
         # for each user, if it is not present in the user list
-        if user not in code.code.user_list:
+        if user not in user_list:
             return f'user {user} not found in user_list'
 
         # assert same number of records per user
-        if len(code.code.user_list[user]) != len(users[user]):
+        if len(user_list[user]) != len(users[user]):
             return f'user {user} number of records does not match.' \
                    f'Expected {len(users[user])} records. ' \
-                   f'Found {len(code.code.user_list[user])}'
+                   f'Found {len(user_list[user])}'
 
         # assert the record is right
-        if code.code.user_list[user] != users[user]:
-            return f"{user} record should be: {users[user]}, found {code.code.user_list[user]}"
+        if user_list[user] != users[user]:
+            return f"{user} record should be: {users[user]}, found {user_list[user]}"
 
     # if everything matches
     return ""
@@ -43,14 +42,14 @@ class TestAddUserRecord(unittest.TestCase):
     """
 
     def setUp(self) -> None:
-        code.code.user_list = {}
+        user_list = {}
 
     def test_add_user_record_one(self):
         """
         tests adding one record for one user
         :return:
         """
-        assert len(code.code.user_list) == 0
+        assert len(user_list) == 0
         # adding one user
         users = {"1": ["TestRecordOne"]}
         for user in users:
@@ -67,7 +66,7 @@ class TestAddUserRecord(unittest.TestCase):
         tests adding multiple records for one user
         :return:
         """
-        assert len(code.code.user_list) == 0
+        assert len(user_list) == 0
         # adding one user, but multiple records
         users = {"1": ["TestRecordOne", "TestRecordTwo"]}
         for user in users:
@@ -86,7 +85,7 @@ class TestAddUserRecord(unittest.TestCase):
         :return:
         """
 
-        assert len(code.code.user_list) == 0
+        assert len(user_list) == 0
         # adding all users
         users = {"1": ["TestRecordOne"], "2": ["TestRecordTwo"]}
 
@@ -105,7 +104,7 @@ class TestAddUserRecord(unittest.TestCase):
         tests adding multiple records for multiple users
         :return:
         """
-        assert len(code.code.user_list) == 0
+        assert len(user_list) == 0
         # adding all users
         users = {"1": ["TestRecordOne", "TestRecordThree"],
                  "2": ["TestRecordTwo", "TestRecordFour"]}
