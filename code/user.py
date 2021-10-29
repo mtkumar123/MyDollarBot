@@ -34,7 +34,7 @@ class User:
         :type: string
         :return: None
         """
-        data_dir = "../data"
+        data_dir = "data"
         abspath = pathlib.Path("{0}/{1}.pickle".format(data_dir, userid)).absolute()
         with open(abspath, "wb") as f:
             pickle.dump(self, f)
