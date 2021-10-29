@@ -4,7 +4,6 @@ File contains functions that stores and retreives data from the .pickle file and
 
 """
 import os
-import pathlib
 import pickle
 import re
 from datetime import datetime
@@ -34,9 +33,8 @@ class User:
         :type: string
         :return: None
         """
-        data_dir = "data"
-        abspath = "{0}/{1}.pickle".format(data_dir, userid)
-        with open(abspath, "wb") as f:
+        data_dir = "../../data"
+        with open("{}/{}.pickle".format(data_dir, userid), "wb") as f:
             pickle.dump(self, f)
 
     def validate_entered_amount(self, amount_entered):
