@@ -129,10 +129,8 @@ No setup required! Try our production bot here: https://t.me/mydollarbotprod_bot
 
 8. BotFather will now confirm the creation of your bot and provide a TOKEN to access the HTTP API - copy this token for future use.
 
-9. In the directory where this repo has been cloned, navigate to the "code" folder and open the "code.py" file. This file consists of a variable by the name "api_token". Paste the token copied in step 8 in the placeholder provided for this variable:
-```
-  api_token = "INSERT API KEY HERE"
-```
+9. Search for "Edit the system environment variables" on your local computer. Click on Environment Variables and create a new System Variable called "API_TOKEN" and paste the token copied in step 8.
+
 10. In the Telegram app, search for your newly created bot by entering the username and open the same. Once this is done, go back to the terminal session. Navigate to the directory containing the "code.py" file and run the following command:
 ```
   python code/bot.py

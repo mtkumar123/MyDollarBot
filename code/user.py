@@ -357,6 +357,7 @@ class User:
         """
         labels = []
         totals = []
+        charts = []
         for category in self.spend_categories:
             total = 0
             for transaction in self.transactions[category]:
@@ -364,11 +365,28 @@ class User:
             if total != 0:
                 labels.append(category)
                 totals.append(total)
-        plt.switch_backend("Agg")
+
+        # Pie Chart
+        plt.clf()
         plt.pie(totals, labels=labels)
         plt.title("Your Expenditure Report")
-        plt.savefig("data/{}_chart.png".format(userid))
-        return "data/{}_chart.png".format(userid)
+        plt.savefig("data/{}_pie_chart.png".format(userid)) # Ensure that the file name is unique
+        charts.append("data/{}_pie_chart.png".format(userid)) # Ensure that the file name is unique
+
+        # Bar Graph
+        plt.clf()
+        plt.switch_backend("Agg")
+        plt.title("Your Expenditure Report")
+        plt.bar(labels, totals)
+        plt.xlabel('Categories')
+        plt.ylabel('Expenditure')
+        plt.title("Your Expenditure Report")
+        plt.savefig("data/{}_bar_chart.png".format(userid)) # Ensure that the file name is unique
+        charts.append("data/{}_bar_chart.png".format(userid)) # Ensure that the file name is unique
+
+        # Add more visualizations here. Maintain the above format while adding more visualizations. 
+
+        return charts
 
     def add_category(self, new_category, userid):
         """
